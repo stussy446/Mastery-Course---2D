@@ -8,8 +8,12 @@ public class PlayerMovementController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 2f;
     [SerializeField] private float jumpForce = 400f;
+    float speed;
     Rigidbody2D rb2d;
     CharacterGrounding characterGrounding;
+    
+
+    public float Speed { get => speed; internal set => speed = value;}
 
     private void Awake()
     {
@@ -22,7 +26,7 @@ public class PlayerMovementController : MonoBehaviour
     private void FixedUpdate()
     {
         float horizontal = Input.GetAxis("Horizontal");
-
+        speed = Mathf.Abs(horizontal);
 
         Vector3 movement = new Vector3(horizontal, 0, 0);
         transform.position += movement * Time.deltaTime * moveSpeed;
