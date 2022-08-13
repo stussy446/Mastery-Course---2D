@@ -1,23 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
+[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(IMove))]
 
 public class CharacterAnimation : MonoBehaviour
 {
     Animator animator;
-    PlayerMovementController playerMovementController;
+    IMove mover;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        playerMovementController = GetComponent<PlayerMovementController>();
+        mover = GetComponent<IMove>();
     }
 
     private void Update()
     {
-        animator.SetFloat("Speed", playerMovementController.Speed);
+        animator.SetFloat("Speed", mover.Speed);
     }
 
 }

@@ -4,16 +4,17 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterGrounding))]
 [RequireComponent(typeof(Rigidbody2D))]
 
-public class PlayerMovementController : MonoBehaviour
+public class PlayerMovementController : MonoBehaviour, IMove
 {
     [SerializeField] private float moveSpeed = 2f;
     [SerializeField] private float jumpForce = 400f;
     float speed;
     Rigidbody2D rb2d;
     CharacterGrounding characterGrounding;
-    
 
-    public float Speed { get => speed; internal set => speed = value;}
+
+    public float Speed { get => speed; internal set => speed = value; }
+
 
     private void Awake()
     {
