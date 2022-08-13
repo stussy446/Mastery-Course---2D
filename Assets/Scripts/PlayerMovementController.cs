@@ -27,7 +27,7 @@ public class PlayerMovementController : MonoBehaviour, IMove
     private void FixedUpdate()
     {
         float horizontal = Input.GetAxis("Horizontal");
-        speed = Mathf.Abs(horizontal);
+        speed = horizontal;
 
         Vector3 movement = new Vector3(horizontal, 0, 0);
         transform.position += movement * Time.deltaTime * moveSpeed;
