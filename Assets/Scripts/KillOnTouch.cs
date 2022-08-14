@@ -9,7 +9,7 @@ public class KillOnTouch : MonoBehaviour
 
         if (playerMovementController != null)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            GameManager.Instance.KillPlayer();
         }
     }
 }
