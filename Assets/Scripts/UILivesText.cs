@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System;
 
 public class UILivesText : MonoBehaviour
 {
@@ -10,8 +11,15 @@ public class UILivesText : MonoBehaviour
         tmproText = GetComponent<TextMeshProUGUI>();
     }
 
-    private void Update()
+
+    private void Start()
     {
+        GameManager.Instance.OnLivesChanged += HandleOnlivesChanged;
         tmproText.text = GameManager.Instance.Lives.ToString();
+    }
+
+    private void HandleOnlivesChanged(int livesRemaining)
+    {
+        tmproText.text = livesRemaining.ToString();
     }
 }

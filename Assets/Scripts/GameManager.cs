@@ -6,9 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance { get; private set; }
 
     public int Lives { get; private set; }
-    public static GameManager Instance { get; private set; }
+
+    public event Action<int> OnLivesChanged;
+
 
     private void Awake()
     {
@@ -19,8 +22,9 @@ public class GameManager : MonoBehaviour
         else
         {
             Instance = this;
-            Lives = 3;
             DontDestroyOnLoad(gameObject);
+
+            RestartGame();
         }
         
     }
@@ -28,7 +32,21 @@ public class GameManager : MonoBehaviour
     internal void KillPlayer()
     {
         Lives--;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        if (OnLivesChanged != null)
+        {
+            OnLivesChanged(Lives);  
+        }
 
+        if (Lives <= 0)
+        {
+            RestartGame();
+        }
+
+    }
+
+    private void RestartGame()
+    {
+        Lives = 3;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
