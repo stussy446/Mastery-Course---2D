@@ -23,19 +23,24 @@ public class PlayerMovementController : MonoBehaviour, IMove
 
     }
 
+    private void Update()
+    {
+        if (Input.GetButtonDown("Fire1") && characterGrounding.IsGrounded)
+        {
+            rb2d.AddForce(Vector2.up * jumpForce);
+        }
+    }
+
 
     private void FixedUpdate()
     {
         float horizontal = Input.GetAxis("Horizontal");
         speed = horizontal;
 
-        Vector3 movement = new Vector3(horizontal, 0, 0);
+        Vector3 movement = new Vector3(horizontal, 0);
         transform.position += movement * Time.deltaTime * moveSpeed;
 
-        if (Input.GetButtonDown("Fire1") && characterGrounding.IsGrounded == true)
-        {
-            rb2d.AddForce(Vector2.up * jumpForce);
-        }
+        
     }
 
 }
