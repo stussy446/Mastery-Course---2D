@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,7 +8,11 @@ public class GameManager : MonoBehaviour
 
     public int Lives { get; private set; }
 
+    private int coins;
+
     public event Action<int> OnLivesChanged;
+    public event Action<int> OnCoinsChanged;
+
 
 
     private void Awake()
@@ -32,6 +34,7 @@ public class GameManager : MonoBehaviour
     internal void KillPlayer()
     {
         Lives--;
+
         if (OnLivesChanged != null)
         {
             OnLivesChanged(Lives);  
@@ -44,9 +47,22 @@ public class GameManager : MonoBehaviour
 
     }
 
+
+    internal void AddCoin()
+    {
+        coins++;
+        OnCoinsChanged?.Invoke(coins);
+    }
+
+
     private void RestartGame()
     {
         Lives = 3;
+        coins = 0;
+
+        OnCoinsChanged?.Invoke(coins);
+
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
