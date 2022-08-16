@@ -1,6 +1,5 @@
 using UnityEngine;
 
-
 [RequireComponent(typeof(CharacterGrounding))]
 [RequireComponent(typeof(Rigidbody2D))]
 
