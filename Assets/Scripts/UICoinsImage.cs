@@ -15,6 +15,11 @@ public class UICoinsImage : MonoBehaviour
         GameManager.Instance.OnCoinsChanged += AnimateCoinImage;
     }
 
+    private void OnDisable()
+    {
+        GameManager.Instance.OnCoinsChanged -= AnimateCoinImage;
+    }
+
     private void AnimateCoinImage(int coins)
     {
         animator.SetTrigger("CoinPickedUp");
