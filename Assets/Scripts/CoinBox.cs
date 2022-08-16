@@ -8,11 +8,13 @@ public class CoinBox : MonoBehaviour
     [SerializeField] private int totalCoins = 1;
 
     private int remainingCoins;
+    Animator animator;
 
 
     private void Awake()
     {
         remainingCoins = totalCoins;
+        animator = GetComponent<Animator>();
     }
 
 
@@ -24,6 +26,7 @@ public class CoinBox : MonoBehaviour
             {
                 GameManager.Instance.AddCoin();
                 remainingCoins--;
+                animator.SetTrigger("FlipCoin");
             }
 
             if (remainingCoins <= 0)
