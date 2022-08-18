@@ -20,9 +20,9 @@ public class CoinBox : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (remainingCoins > 0 && WasHitByPlayer(collision))
+        if (remainingCoins > 0 && collision.WasHitByPlayer())
         {
-            if (WasHitFromBottomSide(collision))
+            if (collision.WasHitFromBottomSide())
             {
                 GameManager.Instance.AddCoin();
                 remainingCoins--;
@@ -38,15 +38,4 @@ public class CoinBox : MonoBehaviour
         }
     }
 
-
-    private static bool WasHitByPlayer(Collision2D collision)
-    {
-        return collision.collider.GetComponent<PlayerMovementController>() != null;
-    }
-
-
-    private static bool WasHitFromBottomSide(Collision2D collision)
-    {
-        return collision.contacts[0].normal.y > 0.5;
-    }
 }
