@@ -525,6 +525,8 @@ GameObject:
   - component: {fileID: 406262356}
   - component: {fileID: 406262358}
   - component: {fileID: 406262357}
+  - component: {fileID: 406262359}
+  - component: {fileID: 406262360}
   m_Layer: 0
   m_Name: Saw Sprite and Collider
   m_TagString: Untagged
@@ -615,6 +617,38 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &406262359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 406262355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ac57bbc70a464e76a99ea9097fa6668, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &406262360
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 406262355}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a5e6916f74f094091bcee2444a99732d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &420590419
 GameObject:
   m_ObjectHideFlags: 3
@@ -1026,6 +1060,7 @@ MonoBehaviour:
   start: {fileID: 385529595}
   end: {fileID: 783884624}
   sawSprite: {fileID: 406262356}
+  sawSpeed: 3
 --- !u!4 &686272679
 Transform:
   m_ObjectHideFlags: 0
