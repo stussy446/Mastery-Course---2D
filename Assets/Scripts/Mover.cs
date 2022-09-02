@@ -1,10 +1,11 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class Saw : MonoBehaviour
+public class Mover : MonoBehaviour
 {
     [SerializeField] Transform start;
     [SerializeField] Transform end;
-    [SerializeField] Transform sawSprite;
+    [SerializeField] [FormerlySerializedAs("sawSprite")] Transform sprite;
     [SerializeField] float sawSpeed = 3f;
 
     private float positionPercent;
@@ -23,7 +24,7 @@ public class Saw : MonoBehaviour
 
         positionPercent += Time.deltaTime * direction * speedForDistance;
 
-        sawSprite.position = Vector3.Lerp(start.position, end.position, positionPercent);
+        sprite.position = Vector3.Lerp(start.position, end.position, positionPercent);
     }
 
     private void SwitchSawDirectionIfNeeded()
