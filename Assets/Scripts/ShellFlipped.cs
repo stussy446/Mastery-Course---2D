@@ -24,20 +24,47 @@ public class ShellFlipped : MonoBehaviour
     {
         if (collision.WasHitByPlayer())
         {
-            if (direction.magnitude == 0)
+            HandlePlayerCollision(collision);
+        }
+        else
+        {
+            if (collision.WasSide())
             {
                 LaunchShell(collision);
+                BreakableBox breakableBox = collision.collider.GetComponent<BreakableBox>();
+
+                if (breakableBox != null)
+                {
+                    Destroy(breakableBox.gameObject);
+                }
+            }
+        }
+    }
+
+    private void HandlePlayerCollision(Collision2D collision)
+    {
+        var playerMovementController = collision.collider.GetComponent<PlayerMovementController>();
+
+        if (direction.magnitude == 0)
+        {
+            LaunchShell(collision);
+
+            if (collision.WasTop())
+            {
+                playerMovementController.Bounce();
+
+            }
+        }
+        else
+        {
+            if (collision.WasTop())
+            {
+                playerMovementController.Bounce();
+                direction = Vector2.zero;
             }
             else
             {
-                if (collision.WasTop())
-                {
-                    direction = Vector2.zero;
-                }
-                else
-                {
-                    GameManager.Instance.KillPlayer();
-                }
+                GameManager.Instance.KillPlayer();
             }
         }
     }

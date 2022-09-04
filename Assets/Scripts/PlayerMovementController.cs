@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterGrounding))]
@@ -42,4 +43,8 @@ public class PlayerMovementController : MonoBehaviour, IMove
         
     }
 
+    internal void Bounce()
+    {
+        rb2d.AddForce(Vector2.up * jumpForce);
+    }
 }
