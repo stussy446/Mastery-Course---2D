@@ -31,11 +31,11 @@ public class ShellFlipped : MonoBehaviour
             if (collision.WasSide())
             {
                 LaunchShell(collision);
-                BreakableBox breakableBox = collision.collider.GetComponent<BreakableBox>();
+                ITakeShellHits takeShellHits = collision.collider.GetComponent<ITakeShellHits>();
 
-                if (breakableBox != null)
+                if (takeShellHits != null)
                 {
-                    Destroy(breakableBox.gameObject);
+                    takeShellHits.HandleShellHit(this);
                 }
             }
         }
