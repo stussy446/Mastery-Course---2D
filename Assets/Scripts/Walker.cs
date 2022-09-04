@@ -36,6 +36,7 @@ public class Walker : MonoBehaviour, ITakeShellHits
     public void HandleShellHit(ShellFlipped shellFlipped)
     {
         SpawnShell();
+        Destroy(shellFlipped.gameObject);
         Destroy(this.gameObject);
     }
 
