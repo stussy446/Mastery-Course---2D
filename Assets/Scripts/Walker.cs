@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Walker : MonoBehaviour
+public class Walker : MonoBehaviour, ITakeShellHits
 {
 
     [SerializeField] private float speed = 1f;
@@ -33,6 +33,12 @@ public class Walker : MonoBehaviour
         }
     }
 
+    public void HandleShellHit(ShellFlipped shellFlipped)
+    {
+        SpawnShell();
+        Destroy(this.gameObject);
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.WasHitByPlayer() && collision.WasTop())
@@ -50,10 +56,15 @@ public class Walker : MonoBehaviour
     {
         if (spawnOnStompPrefab != null)
         {
-            Instantiate(spawnOnStompPrefab, transform.position, transform.rotation);    
+            SpawnShell();
         }
         playerMovementController.Bounce();
         Destroy(gameObject);
+    }
+
+    private GameObject SpawnShell()
+    {
+        return Instantiate(spawnOnStompPrefab, transform.position, transform.rotation);
     }
 
     private bool ReachedEdge()
@@ -113,5 +124,4 @@ public class Walker : MonoBehaviour
     {
         direction *= -1;
     }
-
 }
