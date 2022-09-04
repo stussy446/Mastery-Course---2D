@@ -7,8 +7,13 @@ public static class Collision2DExtensions
         return collision.collider.GetComponent<PlayerMovementController>() != null;
     }
 
-    public static bool WasHitFromBottomSide(this Collision2D collision)
+    public static bool WasBottom(this Collision2D collision)
     {
         return collision.contacts[0].normal.y > 0.5;
+    }
+
+    public static bool WasTop(this Collision2D collision)
+    {
+        return collision.contacts[0].normal.y < -0.5;
     }
 }

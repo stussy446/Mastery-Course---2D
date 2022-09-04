@@ -22,7 +22,7 @@ public class CoinBox : MonoBehaviour
     {
         if (remainingCoins > 0 && collision.WasHitByPlayer())
         {
-            if (collision.WasHitFromBottomSide())
+            if (collision.WasBottom())
             {
                 GameManager.Instance.AddCoin();
                 remainingCoins--;
