@@ -28,6 +28,10 @@ public class PlayerMovementController : MonoBehaviour, IMove
         if (Input.GetButtonDown("Fire1") && characterGrounding.IsGrounded)
         {
             rb2d.AddForce(Vector2.up * jumpForce);
+            if (characterGrounding.GroundedDirection != Vector2.down)
+            {
+                rb2d.AddForce(characterGrounding.GroundedDirection * -1f * jumpForce);
+            }
         }
     }
 
