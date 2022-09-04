@@ -2140,6 +2140,7 @@ GameObject:
   - component: {fileID: 1956525976}
   - component: {fileID: 1956525975}
   - component: {fileID: 1956525974}
+  - component: {fileID: 1956525977}
   m_Layer: 0
   m_Name: Snail
   m_TagString: Untagged
@@ -2294,6 +2295,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1956525977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1956525970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ac57bbc70a464e76a99ea9097fa6668, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1982066096
 GameObject:
   m_ObjectHideFlags: 0
@@ -2917,11 +2930,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2068586192399564978, guid: 81d46b1cdfc6d4178b6c4f38e39fff14, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.5896038
+      value: 8.21
       objectReference: {fileID: 0}
     - target: {fileID: 2068586192399564978, guid: 81d46b1cdfc6d4178b6c4f38e39fff14, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.1
+      value: 4.43
       objectReference: {fileID: 0}
     - target: {fileID: 2068586192399564978, guid: 81d46b1cdfc6d4178b6c4f38e39fff14, type: 3}
       propertyPath: m_LocalPosition.z
